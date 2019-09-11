@@ -43,9 +43,12 @@ client.connect(err => {
 
 app.get("/", (req, res) => res.send("hello world"));
 app.get("/crud", (req, res) => controller.getTableData(req, res, client));
+app.get("/crud/:id", (req, res) => controller.getMessage(req, res, client));
 app.post("/crud", (req, res) => controller.postTableData(req, res, client));
 app.put("/crud", (req, res) => controller.updateTableData(req, res, client));
-app.delete("/crud", (req, res) => controller.deleteTableData(req, res, client));
+app.delete("/crud/", (req, res) =>
+  controller.deleteTableData(req, res, client)
+);
 
 app.listen(process.env.PORT || 3000, () => {
   console.log(`app is running on port ${process.env.PORT || 3000}`);

@@ -36,6 +36,17 @@ describe("crud operations", function() {
       });
   });
 
+  it("should fetch a messages by id", done => {
+    chai
+      .request("http://localhost:3000")
+      .get("/crud/43")
+      .end((err, res) => {
+        console.log("Get message from db by id: ", res.body);
+        res.should.be.json;
+        done();
+      });
+  });
+
   var updateMessages = [
     {
       id: "34",

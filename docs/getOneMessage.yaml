@@ -1,0 +1,20 @@
+paths:
+  /crud/{id}:
+    get:
+      tags:
+        - Message
+      summary: get a message by id
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: User ID
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Get message by id
+        401:
+          description: Unauthorized users
