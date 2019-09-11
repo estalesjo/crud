@@ -13,7 +13,7 @@ describe("crud operations", function() {
     }
   ];
 
-  it("should add message in DB", done => {
+  /* it("should add message in DB", done => {
     for (messege in messeges) {
       chai
         .request("http://localhost:3000")
@@ -24,7 +24,7 @@ describe("crud operations", function() {
           done();
         });
     }
-  });
+  }); */
   it("should fetch all messages", done => {
     chai
       .request("http://localhost:3000")
@@ -39,7 +39,7 @@ describe("crud operations", function() {
   it("should fetch a messages by id", done => {
     chai
       .request("http://localhost:3000")
-      .get("/crud/43")
+      .get("/crud/31")
       .end((err, res) => {
         console.log("Get message from db by id: ", res.body);
         res.should.be.json;
@@ -49,8 +49,8 @@ describe("crud operations", function() {
 
   var updateMessages = [
     {
-      id: "34",
-      message: "hej",
+      id: "47",
+      message: "hejsan",
       author: "emma"
     }
   ];
@@ -70,7 +70,7 @@ describe("crud operations", function() {
   it("should delete a particular message in DB", done => {
     var deleteMessages = [
       {
-        id: "42"
+        id: "48"
       }
     ];
     for (deleteMessage in deleteMessages) {
