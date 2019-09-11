@@ -1,0 +1,10 @@
+/crud/:
+  get:
+    tags:
+      - Message
+    summary: get all message
+    produces:
+      - application/json
+    responses:
+      201:
+        description: An object with user details

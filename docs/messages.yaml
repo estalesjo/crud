@@ -1,0 +1,26 @@
+paths:
+  /crud/:
+    post:
+      tags:
+        - Message
+      summary: post a new message
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: post message
+          description: It enables a user to post a comment
+          required: false
+          schema:
+            $ref: "#/definitions/postComment"
+      responses:
+        201:
+          description: An object with user details
+definitions:
+  postComment:
+    type: object
+    properties:
+      message:
+        type: string
+      author:
+        type: string

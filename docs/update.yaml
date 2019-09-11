@@ -1,0 +1,30 @@
+paths:
+  /crud/:
+    put:
+      tags:
+        - Message
+      summary: update a message or author
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: update message
+          description: It enables to update message or name
+          required: false
+          schema:
+            $ref: "#/definitions/updateMessage"
+      responses:
+        200:
+          description: Updated
+        401:
+          description: Unauthorized users
+definitions:
+  updateMessage:
+    type: object
+    properties:
+      id:
+        type: integer
+      message:
+        type: string
+      author:
+        type: string

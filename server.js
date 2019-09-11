@@ -3,13 +3,18 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const controller = require("./controller");
+const swaggerUi = require("swagger-ui-express");
+const specs = require("./docs/swagger");
 
 const app = express();
 
 const whitelist = ["http://localhost:3001"];
+const whitelist2 = ["http://localhost:3000"];
 const corsOptions = {
   origin: function(origin, callback) {
     if (whitelist.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else if (whitelist2.indexOf(origin) !== -1 || !origin) {
       callback(null, true);
     } else {
       callback(new Error("Not allowed by CORS!"));
@@ -19,6 +24,7 @@ const corsOptions = {
 
 app.use(bodyParser.json());
 app.use(cors(corsOptions));
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
 
 const client = new Client({
   user: "postgres",

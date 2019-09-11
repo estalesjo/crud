@@ -1,0 +1,26 @@
+paths:
+  /crud/:
+    delete:
+      tags:
+        - Message
+      summary: delete a message
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: delete message
+          description: It enables to delete a message
+          required: false
+          schema:
+            $ref: "#/definitions/deleteMessage"
+      responses:
+        200:
+          description: Deleted message
+        401:
+          description: Unauthorized users
+definitions:
+  deleteMessage:
+    type: object
+    properties:
+      id:
+        type: integer
